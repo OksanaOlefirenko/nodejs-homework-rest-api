@@ -6,9 +6,9 @@ const jwt = require('jsonwebtoken');
 const authenticate = async (req, res, next) => {
   try {
     const { authorization = '' } = req.headers;
-    const [bearer, token] = authorization.split('');
+    const [bearer = '', token = ''] = authorization.split(' ');
     if (bearer !== 'Bearer') {
-      throw RequestError(401, 'Not authorizedddddddd');
+      throw RequestError(401, 'Not authorized');
     }
     try {
       const { id } = jwt.verify(token, SECRET_KEY);

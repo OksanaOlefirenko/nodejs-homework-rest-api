@@ -6,7 +6,7 @@ const getAll = async (req, res) => {
   const skip = (page - 1) * limit;
   const result = await Contact.find(
     { owner, ...query },
-    '-createdAt -updateAt',
+    '-createdAt -updatedAt',
     {
       skip,
       limit,
